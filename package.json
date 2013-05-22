@@ -1,0 +1,21 @@
+{
+  "name": "node-sse-example",
+  "version": "0.0.0",
+  "description": "node-sse-example ================",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kljensen/node-sse-example.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "39e6d389e886492ca21d17aedd7b909780aadac8",
+  "dependencies": {
+    "nodemon": "~0.7.8",
+    "express": "~3.2.5"
+  }
+}

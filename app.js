@@ -4,15 +4,14 @@ var app = express();
 var clientId = 0;
 var clients = {};
 
-var template = '<!DOCTYPE html> <html> <body> \
+var template = ' \
+<!DOCTYPE html> <html> <body> \
 	<script type="text/javascript"> \
 		    var source = new EventSource("/events/"); \
 		    source.onmessage = function(e) { \
 		        document.body.innerHTML += e.data + "<br>"; \
 		    }; \
-	</script> \
-	dude \
-	</body> </html>'
+</script> </body> </html>';
 
 app.get('/', function(req, res) {
 	res.send(template);
@@ -22,13 +21,14 @@ app.get('/events/', function(req, res) {
 	req.socket.setTimeout(Infinity);
     res.writeHead(200, {'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'});
     res.write('\n');
-    clients[clientId] = res;
-    clientId++;
+    clients[++clientId] = res;
+    req.on("close", function(){delete clients[clientId]});
 });
 
 setInterval(function(){
-	for (res in clients) {
-		res.send("fucker")
+	var msg = Math.random();
+	for (clientId in clients) {
+		clients[clientId].write("data: "+ msg + "\n\n");
 	};
 }, 2000);
 
