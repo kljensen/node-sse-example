@@ -27,6 +27,7 @@ app.get('/events/', function(req, res) {
 
 setInterval(function(){
 	var msg = Math.random();
+	console.log("Clients: " + Object.keys(clients) + " <- " + msg);
 	for (clientId in clients) {
 		clients[clientId].write("data: "+ msg + "\n\n");
 	};
