@@ -19,7 +19,11 @@ app.get('/', function(req, res) {
 
 app.get('/events/', function(req, res) {
 	req.socket.setTimeout(Infinity);
-    res.writeHead(200, {'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive'});
+    res.writeHead(200, {
+    	'Content-Type': 'text/event-stream',
+    	'Cache-Control': 'no-cache',
+    	'Connection': 'keep-alive'
+    });
     res.write('\n');
     clients[++clientId] = res;
     req.on("close", function(){delete clients[clientId]});
