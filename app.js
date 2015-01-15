@@ -26,8 +26,10 @@ app.get('/events/', function(req, res) {
     	'Connection': 'keep-alive'
     });
     res.write('\n');
-    clients[++clientId] = res;  // <- Add this client to those we consider "attached"
-    req.on("close", function(){delete clients[clientId]});  // <- Remove this client when he disconnects
+    (function(clientId) {
+        clients[clientId] = res;  // <- Add this client to those we consider "attached"
+        req.on("close", function(){delete clients[clientId]});  // <- Remove this client when he disconnects
+    })(++clientId)
 });
 
 setInterval(function(){
