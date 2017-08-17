@@ -11,7 +11,7 @@ var template = ' \
 </script> </body> </html>';
 
 app.get('/', function(req, res) {
-	res.send(template);  // <- Return the static template above
+	res.send(template);  // <- Return the static template/test page above to browser
 });
 
 var clientId = 0;
@@ -19,7 +19,7 @@ var clients = {};  // <- Keep a map of attached clients
 
 // Called once for each new client. Note, this response is left open!
 app.get('/events/', function(req, res) {
-	req.socket.setTimeout(Infinity);
+		req.socket.setTimeout(Number.MAX_VALUE);
     res.writeHead(200, {
     	'Content-Type': 'text/event-stream',  // <- Important headers
     	'Cache-Control': 'no-cache',
