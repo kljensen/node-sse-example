@@ -4,7 +4,8 @@
   "description": "node-sse-example ================",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,9 @@
   "readmeFilename": "README.md",
   "gitHead": "39e6d389e886492ca21d17aedd7b909780aadac8",
   "dependencies": {
-    "nodemon": "~0.7.8",
-    "express": "~3.2.5"
+    "express": "~4.16.3",
+    "nodemon": "~1.17.3",
+    "npm": "^6.0.0",
+    "npm-check-updates": "^2.14.2"
   }
 }
