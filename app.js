@@ -1,14 +1,15 @@
 var express = require('express');
 var app = express();
 
-var template = ' \
-<!DOCTYPE html> <html> <body> \
-	<script type="text/javascript"> \
-		    var source = new EventSource("/events/"); \
-		    source.onmessage = function(e) { \
-		        document.body.innerHTML += e.data + "<br>"; \
-		    }; \
-</script> </body> </html>';
+var template = 
+`<!DOCTYPE html> <html> <body>
+	<script type="text/javascript">
+		var source = new EventSource("/events/");
+		source.onmessage = function(e) {
+			document.body.innerHTML += e.data + "<br>";
+		};
+	</script>
+</body> </html>`;
 
 app.get('/', function (req, res) {
 	res.send(template); // <- Return the static template above
